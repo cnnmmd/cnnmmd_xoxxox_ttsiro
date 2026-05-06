@@ -1,0 +1,14 @@
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND="noninteractive"
+ENV PTHEXP="/exp"
+RUN mkdir ${PTHEXP}
+COPY --chmod=755 runcfg.sh ${PTHEXP}
+RUN \
+  apt-get update && \
+  apt-get upgrade -y && \
+  apt-get install -y --no-install-recommends ca-certificates curl git && \
+  apt-get install -y --no-install-recommends python3-dev build-essential cmake && \
+  apt-get install -y --no-install-recommends libsndfile1 ffmpeg && \
+  rm -rf /var/lib/apt/lists/*
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh

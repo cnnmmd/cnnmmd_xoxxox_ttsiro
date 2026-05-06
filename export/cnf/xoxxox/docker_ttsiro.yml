@@ -1,0 +1,19 @@
+networks:
+  default:
+    name: xoxxox_netmid
+    external: true
+services:
+  xoxxox_ttsiro:
+    image: xoxxox/enviro:001
+    container_name: xoxxox_ttsiro
+    volumes:
+    - ../../../export:/opt/common
+    - ../../../export:/opt/strage
+    - ../../../import/cnnmmd_xoxxox_ttsiro/appiro:/opt/appiro
+    - ../../../import/cnnmmd_xoxxox_ttsiro/appiro/hgf:/root/.cache/huggingface    
+    env_file:
+    - ./envdir.txt
+    ports:
+    - 13201:80
+    shm_size: "256m"
+    command: bash -c "/opt/appiro/Irodori-TTS/.venv/bin/python /opt/common/bin/xoxxox/srvtts.py --engine xoxxox/engine_ttsiro --gensyn 0"
