@@ -8,7 +8,7 @@ services:
     container_name: xoxxox_ttsiro
     volumes:
     - ../../../export:/opt/common
-    - ../../../export:/opt/strage
+    - ../../../vol000:/opt/vol000
     - ../../../import/cnnmmd_xoxxox_ttsiro/appiro:/opt/appiro
     - ../../../import/cnnmmd_xoxxox_ttsiro/appiro/hgf:/root/.cache/huggingface    
     env_file:
